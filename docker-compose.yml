@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    environment: { POSTGRES_DB: studenthub, POSTGRES_USER: app, POSTGRES_PASSWORD: app }
+    ports: ["5432:5432"]
+    volumes: [studenthub_data:/var/lib/postgresql/data]
+  backend:
+    build: ./backend
+    environment: { DB_URL: jdbc:postgresql://db:5432/studenthub, DB_USER: app, DB_PASSWORD: app }
+    ports: ["8080:8080"]
+    depends_on: [db]
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    volumes: ["./frontend:/app"]
+    command: sh -c "npm install && npm run dev"
+    ports: ["5173:5173"]
+    depends_on: [backend]
+volumes:
+  studenthub_data:
