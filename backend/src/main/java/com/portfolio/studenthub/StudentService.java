@@ -19,9 +19,10 @@ public class StudentService {
             return repository.findAll();
         }
 
+        String searchTerm = query.trim();
         return repository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(
-                query.trim(),
-                query.trim()
+                searchTerm,
+                searchTerm
         );
     }
 
@@ -31,14 +32,14 @@ public class StudentService {
     }
 
     public Student create(Student student) {
-        String email = student.getEmail().trim();
+        String email = student.getEmail().trim().toLowerCase();
 
         if (repository.existsByEmail(email)) {
             throw new IllegalArgumentException("A student with this email already exists.");
         }
 
         student.setName(student.getName().trim());
-        student.setEmail(email.toLowerCase());
+        student.setEmail(email);
         student.setDepartment(student.getDepartment().trim());
 
         return repository.save(student);
@@ -46,19 +47,27 @@ public class StudentService {
 
     public Student update(Long id, Student updatedStudent) {
         Student existingStudent = get(id);
-        String email = updatedStudent.getEmail().trim();
+        String email = updatedStudent.getEmail().trim().toLowerCase();
 
         if (repository.existsByEmailAndIdNot(email, id)) {
             throw new IllegalArgumentException("A student with this email already exists.");
         }
 
         existingStudent.setName(updatedStudent.getName().trim());
-        existingStudent.setEmail(email.toLowerCase());
+        existingStudent.setEmail(email);
         existingStudent.setDepartment(updatedStudent.getDepartment().trim());
         existingStudent.setSemester(updatedStudent.getSemester());
         existingStudent.setCgpa(updatedStudent.getCgpa());
 
         return repository.save(existingStudent);
+    }
+
+    public long totalStudents() {
+        return repository.count();
+    }
+
+    public double averageCgpa() {
+        return repository.averageCgpa();
     }
 
     public void delete(Long id) {
