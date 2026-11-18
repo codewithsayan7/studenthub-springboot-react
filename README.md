@@ -12,7 +12,7 @@ The idea is straightforward: keep the common details for each student in one pla
 - Edit an existing record or remove it.
 - View a summary of the number of students and their average CGPA through the stats endpoint.
 
-The application validates incoming student data and prevents duplicate email addresses when creating records.
+The application validates incoming student data, trims unnecessary whitespace, normalises email addresses, and prevents duplicate email addresses when creating or updating records.
 
 ## Built with
 
