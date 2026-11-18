@@ -37,6 +37,10 @@ Spring Boot REST API
  PostgreSQL
 ```
 
+## Screenshots
+
+![StudentHub Dashboard](screenshots/dashboard.jpeg)
+
 ## Run Locally with Docker
 
 ### Prerequisites
@@ -74,6 +78,7 @@ This keeps the database volume. Use `docker compose down -v` only if you intenti
 studenthub-springboot-react/
 ├── backend/          # Spring Boot application and REST API
 ├── frontend/         # React + Vite user interface
+├── screenshots/      # Application screenshots
 ├── docker-compose.yml
 ├── .gitignore
 └── README.md
