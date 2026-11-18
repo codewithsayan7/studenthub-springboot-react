@@ -6,8 +6,8 @@ StudentHub is a simple student management app built with React and Spring Boot. 
 
 - Add, view, edit and delete student records
 - Search students by name or email
-- Validate student details
-- Show a small summary of student records
+- Validate student details and prevent duplicate email addresses (case-insensitive)
+- Show a small summary calculated by the database
 
 ## Tech used
 
@@ -39,6 +39,10 @@ To stop the containers:
 ```bash
 docker compose down
 ```
+
+## Notes
+
+Student names and departments are trimmed before saving, and email addresses are stored in lowercase. The summary endpoint uses database aggregate queries instead of loading every student record into the application. Docker Compose waits for PostgreSQL to become healthy before starting the backend.
 
 ## Project folders
 
