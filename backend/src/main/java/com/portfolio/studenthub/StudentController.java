@@ -1,11 +1,11 @@
 package com.portfolio.studenthub;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,15 +54,9 @@ public class StudentController {
 
     @GetMapping("/stats")
     public Map<String, Object> stats() {
-        List<Student> students = service.all(null);
-        double averageCgpa = students.stream()
-                .mapToDouble(Student::getCgpa)
-                .average()
-                .orElse(0.0);
-
         return Map.of(
-                "total", students.size(),
-                "averageCgpa", averageCgpa
+                "total", service.totalStudents(),
+                "averageCgpa", service.averageCgpa()
         );
     }
 }
