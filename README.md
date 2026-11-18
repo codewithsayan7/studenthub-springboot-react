@@ -1,37 +1,26 @@
-# StudentHub — Student Management System
+# StudentHub
 
-A full-stack student management application built with React, Spring Boot, and PostgreSQL.
+StudentHub is a simple student management app built with React and Spring Boot. I made it to practise building a frontend, connecting it to a REST API, and saving data in a database.
 
 ## Features
 
-- Create, view, update, and delete student records
-- Input validation and duplicate email prevention
+- Add, view, edit and delete student records
 - Search students by name or email
-- Track semester and CGPA
-- Student summary endpoint
+- Validate student details
+- Show a small summary of student records
 
-## Technology Stack
+## Tech used
 
-- **Frontend:** React, Vite
-- **Backend:** Java 21, Spring Boot
-- **Database:** PostgreSQL
-- **API:** REST API
-- **Containerization:** Docker and Docker Compose
+- Java 21
+- Spring Boot
+- React and Vite
+- Spring Data JPA
+- PostgreSQL
+- Docker Compose
 
-## Screenshots
+## Run the project
 
-### StudentHub Dashboard
-
-![StudentHub Dashboard](screenshots/dashboard.jpeg)
-
-## Run Locally
-
-### Prerequisites
-
-- Docker Desktop
-- Git
-
-### Start the application
+You need Git and Docker installed.
 
 ```bash
 git clone https://github.com/codewithsayan7/studenthub-springboot-react.git
@@ -39,27 +28,30 @@ cd studenthub-springboot-react
 docker compose up --build
 ```
 
-### Application URLs
+Then open:
 
-| Service | URL |
-|---|---|
-| Frontend | http://localhost:5173 |
-| Backend API | http://localhost:8080 |
-| Students API | http://localhost:8080/api/students |
+- Frontend: http://localhost:5173
+- Backend: http://localhost:8080
+- Students API: http://localhost:8080/api/students
 
-## Project Structure
+To stop the containers:
 
-```text
-studenthub/
-├── backend/
-├── frontend/
-├── screenshots/
-├── docker-compose.yml
-└── README.md
+```bash
+docker compose down
 ```
+
+## Project folders
+
+- `backend/` – Spring Boot API and tests
+- `frontend/` – React application
+- `screenshots/` – screenshots
+
+## Screenshot
+
+![StudentHub dashboard](screenshots/dashboard.jpeg)
+
+This is a learning project. It does not currently include login, user roles or production deployment.
 
 ## Author
 
-**Sayan Banerjee**
-
-GitHub: [@codewithsayan7](https://github.com/codewithsayan7)
+Sayan Banerjee – https://github.com/codewithsayan7
