@@ -3,6 +3,7 @@ package com.portfolio.studenthub;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 
 @Service
@@ -32,7 +33,7 @@ public class StudentService {
     }
 
     public Student create(Student student) {
-        String email = student.getEmail().trim().toLowerCase();
+        String email = student.getEmail().trim().toLowerCase(Locale.ROOT);
 
         if (repository.existsByEmail(email)) {
             throw new IllegalArgumentException("A student with this email already exists.");
