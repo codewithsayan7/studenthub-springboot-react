@@ -20,9 +20,15 @@ class StudentServiceTest {
     private StudentService service;
 
     @Test
-    void createTrimsFieldsAndNormalisesEmail() {
-        Student student = new Student("  Alex Doe  ", "  ALEX@example.com  ", "  Computer Science  ", 3, 8.2);
-        when(repository.existsByEmail("ALEX@example.com")).thenReturn(false);
+    void createTrimsFieldsAndNormalisesEmailBeforeCheckingDuplicates() {
+        Student student = new Student(
+                "  Alex Doe  ",
+                "  ALEX@example.com  ",
+                "  Computer Science  ",
+                3,
+                8.2
+        );
+        when(repository.existsByEmail("alex@example.com")).thenReturn(false);
         when(repository.save(student)).thenReturn(student);
 
         Student saved = service.create(student);
@@ -30,12 +36,19 @@ class StudentServiceTest {
         assertEquals("Alex Doe", saved.getName());
         assertEquals("alex@example.com", saved.getEmail());
         assertEquals("Computer Science", saved.getDepartment());
+        verify(repository).existsByEmail("alex@example.com");
         verify(repository).save(student);
     }
 
     @Test
-    void createRejectsAnExistingEmail() {
-        Student student = new Student("Alex Doe", "alex@example.com", "Computer Science", 3, 8.2);
+    void createRejectsAnExistingEmailRegardlessOfInputCase() {
+        Student student = new Student(
+                "Alex Doe",
+                "ALEX@example.com",
+                "Computer Science",
+                3,
+                8.2
+        );
         when(repository.existsByEmail("alex@example.com")).thenReturn(true);
 
         assertThrows(IllegalArgumentException.class, () -> service.create(student));
