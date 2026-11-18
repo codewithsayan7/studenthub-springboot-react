@@ -1,47 +1,30 @@
 # StudentHub — Student Management System
 
-A full-stack student management application built with **React**, **Spring Boot**, and **PostgreSQL**. The project demonstrates a REST API-backed workflow for managing student records through a web interface.
+A full-stack student management application built with React, Spring Boot, and PostgreSQL.
 
 ## Features
 
 - Create, view, update, and delete student records
+- Input validation and duplicate email prevention
 - Search students by name or email
-- Track semester and CGPA information
-- Validate student data
-- Prevent duplicate email addresses
-- Retrieve a student summary through the backend API
+- Track semester and CGPA
+- Student summary endpoint
 
 ## Technology Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React, Vite |
-| Backend | Java 21, Spring Boot 3.4.5 |
-| API | Spring Boot REST |
-| Database | PostgreSQL |
-| Containerization | Docker, Docker Compose |
-
-## Architecture
-
-The React frontend communicates with the Spring Boot REST API. The backend handles application logic and validation, and persists student records in PostgreSQL.
-
-```text
-React + Vite
-     |
-     | HTTP / REST
-     v
-Spring Boot REST API
-     |
-     | JPA
-     v
- PostgreSQL
-```
+- **Frontend:** React, Vite
+- **Backend:** Java 21, Spring Boot
+- **Database:** PostgreSQL
+- **API:** REST API
+- **Containerization:** Docker and Docker Compose
 
 ## Screenshots
 
+### StudentHub Dashboard
+
 ![StudentHub Dashboard](screenshots/dashboard.jpeg)
 
-## Run Locally with Docker
+## Run Locally
 
 ### Prerequisites
 
@@ -56,49 +39,24 @@ cd studenthub-springboot-react
 docker compose up --build
 ```
 
-### Access the application
+### Application URLs
 
 | Service | URL |
 |---|---|
-| React frontend | http://localhost:5173 |
+| Frontend | http://localhost:5173 |
 | Backend API | http://localhost:8080 |
 | Students API | http://localhost:8080/api/students |
-
-To stop the services:
-
-```bash
-docker compose down
-```
-
-This keeps the database volume. Use `docker compose down -v` only if you intentionally want to remove persisted database data.
 
 ## Project Structure
 
 ```text
-studenthub-springboot-react/
-├── backend/          # Spring Boot application and REST API
-├── frontend/         # React + Vite user interface
-├── screenshots/      # Application screenshots
+studenthub/
+├── backend/
+├── frontend/
+├── screenshots/
 ├── docker-compose.yml
-├── .gitignore
 └── README.md
 ```
-
-## What This Project Demonstrates
-
-- Building and consuming REST APIs
-- Implementing CRUD operations
-- Connecting Spring Boot to PostgreSQL
-- Applying server-side validation
-- Developing a React frontend
-- Running a multi-service application with Docker Compose
-
-## Future Improvements
-
-- Authentication and role-based authorization
-- Pagination and advanced filtering
-- Automated backend and frontend tests
-- Production deployment and CI/CD
 
 ## Author
 
