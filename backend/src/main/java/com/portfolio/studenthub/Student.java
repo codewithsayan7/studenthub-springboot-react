@@ -1,4 +1,4 @@
-package com.portfolio.studenthub;
+package com.sayan.studenthub;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
