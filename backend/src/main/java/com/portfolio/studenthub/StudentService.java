@@ -1,4 +1,4 @@
-package com.portfolio.studenthub;
+package com.sayan.studenthub;
 
 import org.springframework.stereotype.Service;
 
