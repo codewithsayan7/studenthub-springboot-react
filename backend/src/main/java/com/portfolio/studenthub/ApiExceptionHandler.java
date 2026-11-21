@@ -1,4 +1,4 @@
-package com.portfolio.studenthub;
+package com.sayan.studenthub;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
