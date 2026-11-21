@@ -1,4 +1,4 @@
-package com.portfolio.studenthub;
+package com.sayan.studenthub;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,34 +22,34 @@ class StudentServiceTest {
     @Test
     void createTrimsFieldsAndNormalisesEmailBeforeCheckingDuplicates() {
         Student student = new Student(
-                "  Alex Doe  ",
-                "  ALEX@example.com  ",
+                "  Maya Sen  ",
+                "  MAYA.SEN@example.com  ",
                 "  Computer Science  ",
                 3,
                 8.2
         );
-        when(repository.existsByEmail("alex@example.com")).thenReturn(false);
+        when(repository.existsByEmail("maya.sen@example.com")).thenReturn(false);
         when(repository.save(student)).thenReturn(student);
 
         Student saved = service.create(student);
 
-        assertEquals("Alex Doe", saved.getName());
-        assertEquals("alex@example.com", saved.getEmail());
+        assertEquals("Maya Sen", saved.getName());
+        assertEquals("maya.sen@example.com", saved.getEmail());
         assertEquals("Computer Science", saved.getDepartment());
-        verify(repository).existsByEmail("alex@example.com");
+        verify(repository).existsByEmail("maya.sen@example.com");
         verify(repository).save(student);
     }
 
     @Test
     void createRejectsAnExistingEmailRegardlessOfInputCase() {
         Student student = new Student(
-                "Alex Doe",
-                "ALEX@example.com",
+                "Rohan Das",
+                "MAYA.SEN@example.com",
                 "Computer Science",
                 3,
                 8.2
         );
-        when(repository.existsByEmail("alex@example.com")).thenReturn(true);
+        when(repository.existsByEmail("rohan.das@example.com")).thenReturn(true);
 
         assertThrows(IllegalArgumentException.class, () -> service.create(student));
         verify(repository, never()).save(any());
