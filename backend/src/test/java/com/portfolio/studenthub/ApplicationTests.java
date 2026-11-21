@@ -1,4 +1,4 @@
-package com.portfolio.studenthub;
+package com.sayan.studenthub;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
