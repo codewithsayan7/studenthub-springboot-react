@@ -1,4 +1,4 @@
-package com.portfolio.studenthub;
+package com.sayan.studenthub;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
