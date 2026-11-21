@@ -44,7 +44,7 @@ class StudentServiceTest {
     void createRejectsAnExistingEmailRegardlessOfInputCase() {
         Student student = new Student(
                 "Rohan Das",
-                "MAYA.SEN@example.com",
+                "rohan.das@example.com",
                 "Computer Science",
                 3,
                 8.2
